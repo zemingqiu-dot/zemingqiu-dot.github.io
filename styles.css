@@ -1,3 +1,8 @@
+
+/* iOS：禁止双击/连点把页面放大、禁止文字自动放大 */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html, body { touch-action: manipulation; }
+button, .btn, .pick-btn, a, label { touch-action: manipulation; }
 /* 咖啡杯测 —— 柔和卡片 · 中性极简（shadcn / Attio 风） */
 
 :root {
@@ -383,6 +388,8 @@ input, textarea, select { font: inherit; color: inherit; }
 
 /* 手机：底部弹层 */
 @media (max-width: 860px) {
+  /* iOS 在 font-size < 16px 的输入框聚焦时会自动放大整页，这里统一 16px */
+  input:not([type="range"]):not([type="checkbox"]), textarea, .pick-btn, .pick-btn .pick-val { font-size: 16px; }
   body.pick-open { overflow: hidden; }
   .pick-mask { position: fixed; inset: 0; z-index: 89; background: rgba(20, 20, 22, .25); }
   .pick-pop.sheet {
@@ -1263,4 +1270,17 @@ html.standalone .pick-list { -webkit-overflow-scrolling: touch; }
   .tbar .btn[data-act="stage-flow-enter"] { order: 2; }
   .tbar .btn[data-act="batch-fill"] { order: 3; }
   .tbar .btn[data-act="add-sample"] { order: 4; }
+}
+
+/* iOS 聚焦放大：所有可输入的框在手机上统一 16px（覆盖上面更具体的 14px） */
+@media (max-width: 860px) {
+  .itable .inrow .field input,
+  .itable .inrow .pick-btn,
+  .itable .inrow .pick-val,
+  .sample .field-grid .field input,
+  .sample .field-grid .pick-btn,
+  .sample .field-grid .pick-val,
+  .tag-input, .defect-row input, input.sl-val, textarea, .batch-grid input, .batch-grid .pick-btn {
+    font-size: 16px;
+  }
 }
