@@ -2292,6 +2292,13 @@ const ABOUT_ZH = {
     "本项目目前免费开源，不收取费用，也不代表开发者提供商业服务或技术支持。联系方式：",
   ],
   close: "关闭",
+  sec3: "数据存在哪",
+  p_data: [
+    "这是一个网页 App（PWA）。所有记录——场次、样品、评分、照片——都只存在这台手机的浏览器本地存储里（iPhone 上是 Safari），不会上传到任何服务器，也不会联机。",
+    "换手机、删掉桌面图标、或在 iPhone 上「设置 → Safari → 清除历史记录与网站数据」，都会让数据消失；长期不打开，系统也可能回收这部分数据。",
+    "建议每次杯测后点「导出 → 备份」，把 .json 存到「文件」或云盘，需要时在同一处「恢复」。",
+  ],
+
 };
 
 const ABOUT_EN = {
@@ -2316,6 +2323,13 @@ const ABOUT_EN = {
     "This project is currently free and open-source, charges no fees, and does not mean the developer provides commercial services or technical support. Contact:",
   ],
   close: "Close",
+  sec3: "Where the data lives",
+  p_data: [
+    "This is a web app (PWA). Everything — sessions, samples, scores, photos — is stored only in this phone's browser storage (Safari on iPhone). Nothing is uploaded to any server, and nothing goes online.",
+    "Switching phones, deleting the home-screen icon, or clearing website data in Safari («Settings → Safari → Clear History and Website Data») will erase it; iOS may also reclaim this storage if the app is unused for a long time.",
+    "So after each cupping, tap «Export → Backup» and keep the .json in Files or a cloud drive; restore it from the same dialog.",
+  ],
+
 };
 
 const ABOUT_JA = {
@@ -2339,7 +2353,14 @@ const ABOUT_JA = {
     "法律で認められる範囲において、開発者は本アプリの使用または使用不能により生じた間接的損害、データの消失、意思決定の結果について責任を負いません。本アプリは可用性・正確性・継続的な保守を保証しません。ソースコードはプロジェクトの LICENSE に基づいて許諾されます。本免責事項がライセンスと矛盾する場合はライセンスが優先します。",
     "本プロジェクトは現在無料・オープンソースで、料金はいただいておらず、開発者が商用サービスや技術サポートを提供することを意味するものではありません。連絡先："
   ],
-  "close": "閉じる"
+    "sec3": "データの保存場所",
+  "p_data": [
+    "これは Web アプリ（PWA）です。セッション、サンプル、スコア、写真などの記録はすべて、この端末のブラウザ内（iPhone では Safari）にのみ保存されます。サーバーへの送信も、ネットワーク通信も行いません。",
+    "機種変更、ホーム画面のアイコン削除、Safari の「設定 → Safari → 履歴と Web サイトデータを消去」でデータは消えます。長期間使わない場合も、システムがこの保存領域を回収することがあります。",
+    "カッピングのあとは「書き出し → バックアップ」で .json を「ファイル」などに保存し、必要なときに同じ画面から「復元」してください。",
+  ],
+"close": "閉じる",
+
 };
 
 const ABOUT_KO = {
@@ -2363,7 +2384,14 @@ const ABOUT_KO = {
     "법이 허용하는 범위에서 개발자는 이 앱의 사용 또는 사용 불능으로 인한 간접 손실, 데이터 손실, 의사결정 결과에 대해 책임지지 않습니다. 이 앱은 가용성, 정확성, 지속적 유지보수를 보장하지 않습니다. 소스 코드는 프로젝트 LICENSE에 따라 허가됩니다. 이 고지가 라이선스와 충돌하면 라이선스가 우선합니다.",
     "이 프로젝트는 현재 무료 오픈소스이며 비용을 받지 않고, 개발자가 상업적 서비스나 기술 지원을 제공함을 의미하지 않습니다. 연락처:"
   ],
-  "close": "닫기"
+    "sec3": "데이터 저장 위치",
+  "p_data": [
+    "이 앱은 웹 앱(PWA)입니다. 세션, 샘플, 점수, 사진 등 모든 기록은 이 기기의 브라우저 저장소(iPhone은 Safari)에만 저장되며, 서버로 전송되지 않고 네트워크 통신도 하지 않습니다.",
+    "기기 변경, 홈 화면 아이콘 삭제, Safari의 「설정 → Safari → 방문 기록 및 웹 사이트 데이터 지우기」로 데이터가 사라집니다. 오랫동안 사용하지 않으면 시스템이 이 저장소를 회수할 수도 있습니다.",
+    "커핑 후에는 「내보내기 → 백업」으로 .json을 파일에 저장하고, 필요할 때 같은 화면에서 「복원」하세요.",
+  ],
+"close": "닫기",
+
 };
 
 function openAbout() {
@@ -2380,6 +2408,9 @@ function openAbout() {
       ${sec(T.sec1)}
       ${ps(T.p_about)}
       <p class="about-sign">${T.contactPre}<a class="about-mail" href="mailto:${mail}">${mail}</a>${T.contactPost}</p>
+
+      ${sec(T.sec3)}
+      ${ps(T.p_data)}
 
       ${sec(T.sec2)}
       ${ps(T.p_disc.slice(0, -1))}
@@ -2857,5 +2888,76 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+
+/* ---------------- 首次使用：数据存在本机的说明 ---------------- */
+
+const LOCAL_NOTICE = {
+  zh: {
+    title: "数据存在哪里",
+    items: [
+      "这是一个网页 App。所有记录——场次、样品、评分、照片——都只存在这台手机的浏览器里（iPhone 上是 Safari），不会上传到任何服务器，也不会联机。",
+      "删掉桌面图标、换手机，或在 iPhone 上「设置 → Safari → 清除历史记录与网站数据」，数据就会消失；长期不打开，系统也可能回收这部分空间。",
+      "建议每次杯测后点「导出 → 备份」，把 .json 存到「文件」或云盘，需要时在同一处「恢复」。备份在，数据就在。",
+    ],
+    ok: "知道了",
+  },
+  en: {
+    title: "Where your data lives",
+    items: [
+      "This is a web app. Everything — sessions, samples, scores, photos — is stored only in this phone's browser (Safari on iPhone). Nothing is uploaded to any server, and nothing goes online.",
+      "Deleting the home-screen icon, switching phones, or clearing website data (iPhone: Settings → Safari → Clear History and Website Data) erases it; iOS may also reclaim the space if unused for a long time.",
+      "After each cupping, tap Export → Backup and keep the .json in Files or a cloud drive; restore it from the same dialog. As long as the backup exists, the data exists.",
+    ],
+    ok: "Got it",
+  },
+  ja: {
+    title: "データの保存場所",
+    items: [
+      "これは Web アプリです。セッション、サンプル、スコア、写真などの記録は、すべてこの端末のブラウザ（iPhone では Safari）にのみ保存されます。サーバーへの送信も、ネットワーク通信も行いません。",
+      "ホーム画面のアイコン削除、機種変更、iPhone の「設定 → Safari → 履歴と Web サイトデータを消去」でデータは消えます。長期間使わない場合も、システムが保存領域を回収することがあります。",
+      "カッピングのあとは「書き出し → バックアップ」で .json を「ファイル」などに保存し、必要なときに同じ画面から「復元」してください。バックアップがあればデータは残せます。",
+    ],
+    ok: "了解しました",
+  },
+  ko: {
+    title: "데이터 저장 위치",
+    items: [
+      "이 앱은 웹 앱입니다. 세션, 샘플, 점수, 사진 등 모든 기록은 이 기기의 브라우저(iPhone은 Safari)에만 저장되며, 서버로 전송되지 않고 네트워크 통신도 하지 않습니다.",
+      "홈 화면 아이콘 삭제, 기기 변경, iPhone의 「설정 → Safari → 방문 기록 및 웹 사이트 데이터 지우기」로 데이터가 사라집니다. 오랫동안 사용하지 않으면 시스템이 저장 공간을 회수할 수도 있습니다.",
+      "커핑 후에는 「내보내기 → 백업」으로 .json을 파일이나 클라우드에 저장하고, 필요할 때 같은 화면에서 「복원」하세요. 백업이 있으면 데이터도 남습니다.",
+    ],
+    ok: "확인",
+  },
+};
+
+const NOTICE_KEY = "cupping.notice.local";
+
+function showLocalNotice(force) {
+  try {
+    if (!force && localStorage.getItem(NOTICE_KEY) === "1") return null;
+  } catch (e) {}
+  const lg = (window.I18N && window.I18N.lang) || "zh";
+  const T = LOCAL_NOTICE[lg] || LOCAL_NOTICE.zh;
+  const items = T.items.map((t) => `<p class="about-p">${t}</p>`).join("");
+  const { mask } = openModal(
+    `<div class="mbody">
+      <h3 class="mtitle">${T.title}</h3>
+      ${items}
+      <p class="about-p" style="color:var(--ink-3)"></p>
+    </div>
+    <div class="mfoot"><div class="grow"></div><button class="btn" data-act="notice-ok">${T.ok}</button></div>`,
+    { wide: false }
+  );
+  mask.querySelector('[data-act="notice-ok"]').addEventListener("click", () => {
+    try { localStorage.setItem(NOTICE_KEY, "1"); } catch (e) {}
+    mask.remove();
+  });
+  return mask;
+}
+
 /* 启动：先拿一次「我填过」的记忆词，再渲染。失败不影响使用。 */
-loadKnown().finally(() => render());
+loadKnown().finally(() => {
+  render();
+  /* 第一次进入时说明数据存在本机；关掉后不再出现 */
+  setTimeout(() => showLocalNotice(false), 600);
+});

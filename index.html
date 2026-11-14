@@ -73,7 +73,7 @@
       : "在浏览器菜单里选「添加到主屏幕 / 安装应用」，之后就能像 App 一样离线使用。";
     var box = document.createElement("div");
     box.setAttribute("data-install-tip", "1");
-    box.style.cssText = "position:fixed;left:12px;right:12px;bottom:14px;z-index:9000;background:#111;color:#fff;border-radius:12px;padding:13px 14px;font:13.5px/1.5 -apple-system,system-ui,'PingFang SC',sans-serif;display:flex;gap:10px;align-items:flex-start";
+    box.style.cssText = "position:fixed;left:12px;right:12px;bottom:14px;z-index:90;background:#111;color:#fff;border-radius:12px;padding:13px 14px;font:13.5px/1.5 -apple-system,system-ui,'PingFang SC',sans-serif;display:flex;gap:10px;align-items:flex-start";
     box.innerHTML = '<div style="flex:1">' + msg + "</div>" +
       '<button type="button" style="flex:none;background:transparent;border:0;color:#9a9aa0;font-size:18px;line-height:1;padding:0 2px">×</button>';
     box.querySelector("button").addEventListener("click", function () {

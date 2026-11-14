@@ -1,7 +1,7 @@
 /* 咖啡杯测 —— 离线缓存
    策略：页面与静态资源网络优先（断网回退缓存），接口一律不缓存（数据必须实时）。
    只在安全上下文（https / localhost）生效；局域网 http 下浏览器会静默忽略。 */
-const VERSION = "cupping-pwa-v1";
+const VERSION = "cupping-pwa-v2";
 const PRECACHE = [
   "/",
   "/index.html",
