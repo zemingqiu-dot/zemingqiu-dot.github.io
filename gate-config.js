@@ -1,3 +1,1 @@
-/* 访问密码（SHA-256 十六进制）。留空 = 不启用密码。 */
-window.__GATE_HASH = "78b1cc3eb76dc256fa6e5c3ae418c21ebb4bcb691f6227ac0d704311f7c8eb66";
-window.__GATE_TIP = "输入访问密码";
+window.__GATE_HASH="78b1cc3eb76dc256fa6e5c3ae418c21ebb4bcb691f6227ac0d704311f7c8eb66",window.__GATE_TIP="输入访问密码";
